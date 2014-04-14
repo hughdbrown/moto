@@ -3,6 +3,8 @@ from jinja2 import Template
 from moto.core.responses import BaseResponse
 from moto.ec2.models import ec2_backend
 
+FAKE_ATTACH_TIME = "2014-01-01T00:00:00.000Z"
+
 
 class ElasticBlockStore(BaseResponse):
     def attach_volume(self):
@@ -127,7 +129,7 @@ DESCRIBE_VOLUMES_RESPONSE = """<DescribeVolumesResponse xmlns="http://ec2.amazon
                        <instanceId>{{ volume.attachment.instance.id }}</instanceId>
                        <device>{{ volume.attachment.device }}</device>
                        <status>attached</status>
-                       <attachTime>YYYY-MM-DDTHH:MM:SS.SSSZ</attachTime>
+                       <attachTime>%s</attachTime>
                        <deleteOnTermination>false</deleteOnTermination>
                     </item>
                 {% endif %}
@@ -136,7 +138,7 @@ DESCRIBE_VOLUMES_RESPONSE = """<DescribeVolumesResponse xmlns="http://ec2.amazon
           </item>
       {% endfor %}
    </volumeSet>
-</DescribeVolumesResponse>"""
+</DescribeVolumesResponse>""" % (FAKE_ATTACH_TIME, )
 
 DELETE_VOLUME_RESPONSE = """<DeleteVolumeResponse xmlns="http://ec2.amazonaws.com/doc/2012-12-01/">
   <requestId>59dbff89-35bd-4eac-99ed-be587EXAMPLE</requestId>
