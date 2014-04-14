@@ -107,7 +107,7 @@ CREATE_VOLUME_RESPONSE = """<CreateVolumeResponse xmlns="http://ec2.amazonaws.co
   <snapshotId/>
   <availabilityZone>{{ volume.zone.name }}</availabilityZone>
   <status>creating</status>
-  <createTime>YYYY-MM-DDTHH:MM:SS.000Z</createTime>
+  <createTime>2014-01-01T00:00:00.000Z</createTime>
   <volumeType>standard</volumeType>
 </CreateVolumeResponse>"""
 
@@ -121,7 +121,7 @@ DESCRIBE_VOLUMES_RESPONSE = """<DescribeVolumesResponse xmlns="http://ec2.amazon
              <snapshotId/>
              <availabilityZone>{{ volume.zone.name }}</availabilityZone>
              <status>{{ volume.status }}</status>
-             <createTime>YYYY-MM-DDTHH:MM:SS.SSSZ</createTime>
+             <createTime>2014-01-01T00:00:00.000Z</createTime>
              <attachmentSet>
                 {% if volume.attachment %}
                     <item>
@@ -129,7 +129,7 @@ DESCRIBE_VOLUMES_RESPONSE = """<DescribeVolumesResponse xmlns="http://ec2.amazon
                        <instanceId>{{ volume.attachment.instance.id }}</instanceId>
                        <device>{{ volume.attachment.device }}</device>
                        <status>attached</status>
-                       <attachTime>%s</attachTime>
+                       <attachTime>2014-01-01T00:00:00.000Z</attachTime>
                        <deleteOnTermination>false</deleteOnTermination>
                     </item>
                 {% endif %}
@@ -138,7 +138,7 @@ DESCRIBE_VOLUMES_RESPONSE = """<DescribeVolumesResponse xmlns="http://ec2.amazon
           </item>
       {% endfor %}
    </volumeSet>
-</DescribeVolumesResponse>""" % (FAKE_ATTACH_TIME, )
+</DescribeVolumesResponse>"""
 
 DELETE_VOLUME_RESPONSE = """<DeleteVolumeResponse xmlns="http://ec2.amazonaws.com/doc/2012-12-01/">
   <requestId>59dbff89-35bd-4eac-99ed-be587EXAMPLE</requestId>
@@ -151,7 +151,7 @@ ATTACHED_VOLUME_RESPONSE = """<AttachVolumeResponse xmlns="http://ec2.amazonaws.
   <instanceId>{{ attachment.instance.id }}</instanceId>
   <device>{{ attachment.device }}</device>
   <status>attaching</status>
-  <attachTime>YYYY-MM-DDTHH:MM:SS.000Z</attachTime>
+  <attachTime>2014-01-01T00:00:00.000Z</attachTime>
 </AttachVolumeResponse>"""
 
 DETATCH_VOLUME_RESPONSE = """<DetachVolumeResponse xmlns="http://ec2.amazonaws.com/doc/2012-12-01/">
@@ -160,7 +160,7 @@ DETATCH_VOLUME_RESPONSE = """<DetachVolumeResponse xmlns="http://ec2.amazonaws.c
    <instanceId>{{ attachment.instance.id }}</instanceId>
    <device>{{ attachment.device }}</device>
    <status>detaching</status>
-   <attachTime>YYYY-MM-DDTHH:MM:SS.000Z</attachTime>
+   <attachTime>2014-01-01T00:00:00.000Z</attachTime>
 </DetachVolumeResponse>"""
 
 CREATE_SNAPSHOT_RESPONSE = """<CreateSnapshotResponse xmlns="http://ec2.amazonaws.com/doc/2012-12-01/">
